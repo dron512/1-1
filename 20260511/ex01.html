@@ -40,6 +40,13 @@
             margin-bottom: 8px;
         }
 
+        .event_box {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: rgb(255, 241, 210);
+            border-radius: 10px;
+        }
+
         input {
             width: 400px;
             height: 34px;
@@ -53,7 +60,8 @@
             border-radius: 6px;
             cursor: pointer;
         }
-        button:hover{
+
+        button:hover {
             background-color: rgb(255, 120, 120);
         }
     </style>
@@ -79,12 +87,15 @@
         </div>
         <div class="event_box">
             <h2>오늘의 간식</h2>
+            <p id="snak_print">버튼을 누르면 간식이 추첨됩니다.</p>
+            <button id="random_btn">추첨</button>
         </div>
     </div>
     <script>
         const snacks = ['치즈토스트', '딸기 에이드', '초코 쿠키'];
         // snacks.push('테스트');
 
+        // 리스트 추가 하는 함수
         function renderSnack(ss) {
             const li1 = document.createElement('li');
             li1.textContent = ss;
@@ -95,9 +106,38 @@
             renderSnack(snacks[i]);
         }
 
-        document.getElementById('add_btn').onclick = function(){
+        document.getElementById('add_btn').onclick = function () {
             const input = document.getElementById('input_ss').value;
-            alert(input);
+            console.log(Boolean(input));
+            if (!input) {
+                alert('간식이름을 입력하세요');
+                return; // 함수종료시에는 다음줄 실행 안됨
+            }
+            snacks.push(input);
+            renderSnack(input);
+            document.getElementById('input_ss').value = "";
+            document.getElementById('input_ss').focus();    //input 창 클릭되어지게...
+        }
+
+        function getRandomNumber(){
+            return Math.floor(Math.random() * snacks.length);
+        }
+
+        document.getElementById('random_btn').onclick = function () {
+            const result = getRandomNumber();
+
+            document.getElementById('snak_print').textContent = 
+                `안녕하세요 간식이 먹고 싶어요  ${snacks[result]} 추천합니다.`;
+
+            // 0<x<1
+            // 0.000001 < x < 0.9999999
+            // 0.0000003 < x < 2.79999999
+            // Math.floor 내림 Math.round Math.ceil
+            // 0 2
+            // x = 0.1 0.2 0.3 0.4 0.5 0.6 0.7 ~
+            // x10 = 1.0 2.0 3.0 4.0 5.0 6.0 7.0 ~
+            // alert('누름' + result);
+
         }
 
     </script>
