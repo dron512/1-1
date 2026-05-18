@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: rgb(245, 245, 245);
+            font-family: "Noto Sans KR", sans-serif;
+        }
+
+        h1 {
+            color: rgb(50, 80, 160);
+        }
+
+        .wrap {
+            width: 600px;
+            margin: 30px auto;
+            /* 바깥쪽 여백 */
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .menu_box {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: rgb(235, 242, 255);
+            border-radius: 10px;
+        }
+
+        .menu_box li {
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 400px;
+            height: 34px;
+        }
+
+        button {
+            height: 38px;
+            background-color: rgb(50, 80, 160);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        button:hover{
+            background-color: rgb(255, 120, 120);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <h1>우리반 간식 소개 & 추천</h1>
+        <p>친구들과 먹고 싶은 간식을 소개하고 추첨하는 웹 페이지입니다.</p>
+        <img src="snackbar-hero.png" alt="" srcset="">
+        <div class="menu_box">
+            <h2>인기간식</h2>
+            <ul id="menu_list">
+                <!-- <li>asdf</li>
+                <li>asdf</li>
+                <li>asdf</li> -->
+            </ul>
+        </div>
+        <div class="menu_box">
+            <h2>간식 추가하기</h2>
+            <input type="text" name="" id="input_ss">
+            <button id="add_btn">추가</button>
+        </div>
+        <div class="event_box">
+            <h2>오늘의 간식</h2>
+        </div>
+    </div>
+    <script>
+        const snacks = ['치즈토스트', '딸기 에이드', '초코 쿠키'];
+        // snacks.push('테스트');
+
+        function renderSnack(ss) {
+            const li1 = document.createElement('li');
+            li1.textContent = ss;
+            document.getElementById('menu_list').appendChild(li1);
+        }
+
+        for (let i = 0; i < snacks.length; i++) {
+            renderSnack(snacks[i]);
+        }
+
+        document.getElementById('add_btn').onclick = function(){
+            const input = document.getElementById('input_ss').value;
+            alert(input);
+        }
+
+    </script>
+</body>
+
+</html>
