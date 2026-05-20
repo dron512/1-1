@@ -94,7 +94,7 @@
     <script>
         const snacks = ['치즈토스트', '딸기 에이드', '초코 쿠키'];
         // snacks.push('테스트');
-
+        
         // 리스트 추가 하는 함수
         function renderSnack(ss) {
             const li1 = document.createElement('li');
@@ -119,12 +119,12 @@
             document.getElementById('input_ss').focus();    //input 창 클릭되어지게...
         }
 
-        function getRandomNumber(){
-            return Math.floor(Math.random() * snacks.length);
+        function getRandomNumber(n){
+            return Math.floor(Math.random() * n);
         }
 
         document.getElementById('random_btn').onclick = function () {
-            const result = getRandomNumber();
+            const result = getRandomNumber(snacks.length);
 
             document.getElementById('snak_print').textContent = 
                 `안녕하세요 간식이 먹고 싶어요  ${snacks[result]} 추천합니다.`;
